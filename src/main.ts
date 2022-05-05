@@ -49,7 +49,7 @@ async function bootstrap() {
 
   // Swagger settings
   const config = new DocumentBuilder()
-    .setTitle('Kanban service')
+    .setTitle('Team 34')
     .setDescription('The kanban service API description')
     .setVersion('1.0')
     .addServer(`/`)
