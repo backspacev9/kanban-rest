@@ -32,6 +32,7 @@ export class BoardsService {
       .select([
         'boards.id',
         'boards.title',
+        'boards.description',
         'columns.id',
         'columns.title',
         'columns.order',
@@ -39,6 +40,7 @@ export class BoardsService {
         'tasks.title',
         'tasks.order',
         'tasks.description',
+        'tasks.done',
         'tasks.userId',
         'files.filename',
         'files.fileSize',
@@ -56,6 +58,7 @@ export class BoardsService {
   async create(boardDto: CreateBoardDto): Promise<IBoard> {
     const board = new Board();
     board.title = boardDto.title;
+    board.description = boardDto.description;
     const modelBoard = await this.boardsRepository.save(board);
     return modelBoard;
   }
@@ -75,6 +78,7 @@ export class BoardsService {
     }
 
     board.title = body.title;
+    board.description = body.description;
     const data = await board.save();
     return data;
   }
