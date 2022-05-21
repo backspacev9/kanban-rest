@@ -27,7 +27,7 @@ export interface ITask {
 }
 
 @Entity('tasks')
-@Unique('tasks_order_unique_constraint', ['order', 'id'])
+// @Unique('tasks_order_unique_constraint', ['order', 'columnId'])
 export class Task extends BaseEntity {
   /** @public record uuid */
   @ApiProperty({ example: '40af606c-c0bb-47d1-bc20-a2857242cde3', description: 'Unique task ID' })
@@ -83,6 +83,15 @@ export class Task extends BaseEntity {
   @ColumnPg({ nullable: true })
   columnId!: string;
 
+  @ApiProperty({
+    example: [
+      {
+        filename: 'foto.jpg',
+        fileSize: 6105000,
+      },
+    ],
+    description: 'Array of files associated with the task',
+  })
   @OneToMany(() => File, (file) => file.task, { onDelete: 'CASCADE', onUpdate: 'CASCADE' })
   files!: File[];
 }

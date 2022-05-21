@@ -49,10 +49,9 @@ async function bootstrap() {
 
   // Swagger settings
   const config = new DocumentBuilder()
-    .setTitle('Team 34')
+    .setTitle('Kanban service')
     .setDescription('The kanban service API description')
     .setVersion('1.0')
-    .addServer(`/`)
     .addBearerAuth(
       {
         in: 'header',

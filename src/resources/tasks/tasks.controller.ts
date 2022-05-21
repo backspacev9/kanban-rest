@@ -19,6 +19,9 @@ import { UpdateTaskDto } from './dto/update-tasks.dto';
 import { TasksService } from './tasks.service';
 import { ITask, Task } from './tasks.entity';
 
+import TaskCreate from './schema/controller.create';
+import TaskUpdate from './schema/controller.update';
+
 import { AuthGuard } from '../auth/jwt-auth.guard';
 
 @ApiTags('Tasks')
@@ -57,7 +60,7 @@ export class TasksController {
   }
 
   @ApiOperation({ summary: 'Create task' })
-  @ApiResponse({ status: 201, type: Task })
+  @ApiResponse({ status: 201, schema: TaskCreate })
   @ApiParam({ name: 'boardId', description: 'ID Board' })
   @ApiParam({ name: 'columnId', description: 'ID Column' })
   @Post()
@@ -86,7 +89,7 @@ export class TasksController {
   }
 
   @ApiOperation({ summary: 'Update task' })
-  @ApiResponse({ status: 200, type: Task })
+  @ApiResponse({ status: 200, schema: TaskUpdate })
   @ApiParam({ name: 'boardId', description: 'ID Board' })
   @ApiParam({ name: 'columnId', description: 'ID Column' })
   @ApiParam({ name: 'taskId', description: 'ID Task' })
