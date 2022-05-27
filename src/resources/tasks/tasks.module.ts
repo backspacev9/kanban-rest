@@ -11,9 +11,12 @@ import { BoardsModule } from '../boards/boards.module';
 import { ColumnsModule } from '../columns/columns.module';
 import { UsersModule } from '../users/users.module';
 
+import { SearchService } from '../search/search.service';
+import { SearchController } from '../search/search.controller';
+
 @Module({
-  providers: [TasksService],
-  controllers: [TasksController],
+  providers: [TasksService, SearchService],
+  controllers: [TasksController, SearchController],
   imports: [AuthModule, BoardsModule, ColumnsModule, UsersModule, TypeOrmModule.forFeature([Task])],
 })
 export class TasksModule {}
